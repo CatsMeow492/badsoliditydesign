@@ -5,7 +5,25 @@ pragma solidity ^0.8.0;
 // The gas costs comes from the fact that we are iterating over an unbounded array.
 // AVOID ARRAYS WHENEVER POSSIBLE!!
 
+Request[] public requests;
+address public manager;
+uint public minimumContribution;
+address[] public approvers;
+
+modifer restricted() {
+    require(msg.sender == manager);
+    _;
+}
+
 contract Campaign {
+    manager = msg.sender;
+    minimumContribution = minContribution;
+
+    function contribute() public payable {
+        require(msg.value >= minimumContribution);
+        approvers.push(msg.sender);
+    }
+
     function approveRequest(Request request) public {
         bool isApprover = false;
         for (uint i = 0; i < approvers.length; i++) {
