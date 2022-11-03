@@ -1,6 +1,6 @@
 // Solidity Version 8
 // The use of assembly in this contract makes it very cheap to deploy and use.
-pragma solidity 0.8.24;
+pragma solidity 0.8.17;
 
 // This is a proxy contract
 contract GoodProxy {
@@ -52,4 +52,6 @@ contract GoodProxy {
             }
         }
     }
+    // This is the receive function of the proxy contract
+    receive() external payable {}
 }
