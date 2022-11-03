@@ -1,4 +1,5 @@
 // Solidity Version 8
+// The use of assembly in this contract makes it very cheap to deploy and use.
 pragma solidity 0.8.24;
 
 // This is a proxy contract
